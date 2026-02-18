@@ -1,0 +1,46 @@
+import { Component, inject, output } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { PomodoroService } from '../../services/pomodoro.service';
+import { AppStateService } from '../../services/app-state.service';
+
+@Component({
+  selector: 'app-header',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.scss'
+})
+export class HeaderComponent {
+  private pomodoroService = inject(PomodoroService);
+  private appStateService = inject(AppStateService);
+
+  onOpenSettings = output<void>();
+
+  get pomodoroTime(): string {
+    return this.pomodoroService.formatTime();
+  }
+
+  get isPomodoroRunning(): boolean {
+    return this.pomodoroService.isRunning();
+  }
+
+  get pomodoroEnabled(): boolean {
+    return this.appStateService.pomodoroEnabled();
+  }
+
+  get focusMode(): boolean {
+    return this.appStateService.focusMode();
+  }
+
+  togglePomodoro(): void {
+    this.pomodoroService.toggleTimer();
+  }
+
+  toggleFocusMode(): void {
+    this.appStateService.toggleFocusMode();
+  }
+
+  openSettings(): void {
+    this.onOpenSettings.emit();
+  }
+}
