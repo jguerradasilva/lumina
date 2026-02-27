@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output, output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PomodoroService } from '../../services/pomodoro.service';
 import { AppStateService } from '../../services/app-state.service';
@@ -24,8 +24,18 @@ export class HeaderComponent {
     return this.pomodoroService.isRunning();
   }
 
+  // Controla se o timer pomodoro é exibido
+  get pomodoroTimerEnabled(): boolean {
+    return this.appStateService.pomodoroTimerEnabled();
+  }
+
   get pomodoroEnabled(): boolean {
     return this.appStateService.pomodoroEnabled();
+  }
+
+  // Controla se o botão de modo foco é exibido
+  get focusModeEnabled(): boolean {
+    return this.appStateService.focusModeEnabled();
   }
 
   get focusMode(): boolean {

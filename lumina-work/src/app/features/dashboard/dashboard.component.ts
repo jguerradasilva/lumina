@@ -35,6 +35,36 @@ export class DashboardComponent implements OnInit {
     color: '#E8F0FE'
   });
 
+  // ============ GETTERS DO AppStateService ============
+  get focusMode(): boolean {
+    return this.appStateService.focusMode();
+  }
+
+  get fontSize(): 'small' | 'medium' | 'large' {
+    return this.appStateService.fontSize();
+  }
+
+  get clearReading(): boolean {
+    return this.appStateService.clearReading();
+  }
+
+  get lowAttention(): boolean {
+    return this.appStateService.lowAttention();
+  }
+
+  get guidedSteps(): boolean {
+    return this.appStateService.guidedSteps();
+  }
+
+  get darkMode(): boolean {
+    return this.appStateService.darkMode();
+  }
+
+  get highContrast(): boolean {
+    return this.appStateService.highContrast();
+  }
+
+  // ============ GETTERS DO BoardService ============
   get columns(): Column[] {
     return this.boardService.columns();
   }
@@ -43,11 +73,7 @@ export class DashboardComponent implements OnInit {
     return localStorage.getItem('focusActivity') || '';
   }
 
-  get focusMode(): boolean {
-    return this.appStateService.focusMode();
-  }
-
-  get openColumns(){
+  get openColumns() {
     return this.columns.filter(c => !this.isCollapsed(c.columnId));
   }
 
@@ -120,15 +146,12 @@ export class DashboardComponent implements OnInit {
 
     if (!form.name.trim()) return;
 
-    // Usar o columnId do formulário (permite mudança de coluna)
     const targetColumnId = form.columnId || this.selectedColumn()?.columnId;
     if (!targetColumnId) return;
 
     if (task) {
-      // Editar tarefa existente
       this.boardService.updateTask(task.id, form.name, form.description);
     } else {
-      // Criar nova tarefa
       this.boardService.addTask(targetColumnId, form.name, form.description);
     }
 
@@ -168,10 +191,8 @@ export class DashboardComponent implements OnInit {
     if (!form.name.trim()) return;
 
     if (column) {
-      // Editar lista existente
       this.boardService.updateColumn(column.columnId, form.name, form.color);
     } else {
-      // Criar nova lista
       this.boardService.addColumn(form.name, form.color);
     }
 
@@ -179,7 +200,7 @@ export class DashboardComponent implements OnInit {
     this.closeListModal();
   }
 
- deleteList(columnId: string): void {
+  deleteList(columnId: string): void {
     if (confirm('Tem certeza que deseja excluir esta lista? Todas as tarefas serão removidas.')) {
       this.boardService.deleteColumn(columnId);
       this.updateOpenLists();

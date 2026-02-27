@@ -49,3 +49,45 @@ body {
   border-width: 0;
 }
 
+/* ========== global.scss / styles.scss ========== */
+
+/* tamanho da fonte raiz (1rem) */
+body.font-small  { font-size: 14px; }
+body.font-medium { font-size: 16px; } /* valor padrão */
+body.font-large  { font-size: 18px; }
+
+/* modo escuro */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+body.dark-mode .app-header,
+body.dark-mode .app-footer,
+body.dark-mode .panel,
+body.dark-mode .modal-content {
+  background-color: #1e1e1e;
+  color: inherit;
+}
+body.dark-mode .toggle-item { border-bottom-color: #444; }
+
+/* alto contraste */
+body.high-contrast {
+  background-color: #000;
+  color: #fff;
+}
+body.high-contrast .panel,
+body.high-contrast .modal-content {
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #fff;
+}
+body.high-contrast .btn-save,
+body.high-contrast .btn-cancel {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #000;
+}
+body.high-contrast .slider {
+  background-color: #000;
+  border: 2px solid #fff;
+}

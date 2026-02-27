@@ -16,6 +16,8 @@ export class App {
   protected readonly title = signal('lumina-work');
   showLayout = signal(false);
   settingsOpen = false;
+  darkMode = false;
+  highContrast = false;
 
   constructor(private router: Router) {
     // Ocultar header/footer no onboarding
@@ -34,5 +36,13 @@ export class App {
 
   handleCloseSettings() {
     this.settingsOpen = false;
+  }
+
+  handleSaveSettings(settings: any) {
+    this.darkMode = settings.darkMode;
+    this.highContrast = settings.highContrast;
+
+    document.body.classList.toggle('dark-mode', this.darkMode);
+    document.body.classList.toggle('high-contrast', this.highContrast);
   }
 }

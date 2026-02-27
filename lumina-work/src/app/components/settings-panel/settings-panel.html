@@ -2,141 +2,149 @@
   <div class="overlay" (click)="onClose()"></div>
 
   <aside class="panel open">
-    <header class="panel-header">
-      <div>
-        <h2 class="panel-title">Configurações</h2>
-        <p class="panel-subtitle">
-          Use esta página para ajustar o aplicativo do jeito que funciona melhor para você.
-        </p>
-      </div>
-      <button class="panel-close" (click)="onClose()">✕</button>
-    </header>
-
-    <section class="section-desc">
-      <h3>Modos Cognitivos</h3>
-      <p class="panel-subtitle">Escolha modos já personalizados</p>
-      <div class="toggle-item">
+    <form (ngSubmit)="onClose()">
+      <header class="panel-header">
         <div>
-          <span>Foco</span>
-          <small>Modo leitura clara, notificações bloqueadas</small>
+          <h2 class="panel-title">Configurações</h2>
+          <p class="panel-subtitle">Personalize sua experiência de uso</p>
         </div>
-        <label class="switch">
-          <input type="checkbox" />
-          <span class="slider"></span>
-        </label>
-      </div>
+        <button class="panel-close" type="button" (click)="onClose()">✕</button>
+      </header>
 
-      <div class="toggle-item">
-        <div>
-          <span>Leitura Clara</span>
-          <small>Otimização visual, menos distrações</small>
-        </div>
-        <label class="switch">
-          <input type="checkbox" />
-          <span class="slider"></span>
-        </label>
-      </div>
+      <!-- Acessibilidade Cognitiva -->
+      <section class="section-desc">
+        <h3>Acessibilidade Cognitiva</h3>
+        <p class="panel-subtitle">Modos pensados para facilitar a leitura e concentração</p>
 
-      <div class="toggle-item">
-        <div>
-          <span>Sensibilidade Sensorial</span>
-          <small>Reduz sons e estímulos</small>
+        <div class="toggle-item">
+          <div class="toggle-small">
+            <span>Leitura Clara</span>
+            <small>Esconde distrações e simplifica a interface</small>
+          </div>
+          <label class="switch">
+            <input
+              type="checkbox"
+              [checked]="settingsForm().clearReading"
+              (change)="updateField('clearReading', $any($event.target).checked)">
+            <span class="slider"></span>
+          </label>
         </div>
-        <label class="switch">
-          <input type="checkbox" />
-          <span class="slider"></span>
-        </label>
-      </div>
 
-      <div class="toggle-item">
-        <div>
-          <span>Baixa Atenção</span>
-          <small>Texto maior e frases curtas.</small>
+        <div class="toggle-item">
+          <div class="toggle-small">
+            <span>Baixa Atenção</span>
+            <small>Aumenta fontes e simplifica textos</small>
+          </div>
+          <label class="switch">
+            <input
+              type="checkbox"
+              [checked]="settingsForm().lowAttention"
+              (change)="updateField('lowAttention', $any($event.target).checked)">
+            <span class="slider"></span>
+          </label>
         </div>
-        <label class="switch">
-          <input type="checkbox" />
-          <span class="slider"></span>
-        </label>
-      </div>
-    </section>
 
-    <section class="section-desc">
-      <h3>Personalização Visuais</h3>
-      <p class="panel-subtitle">Algumas configurações extras que podem melhorar sua experiência.</p>
-      <div class="toggle-item">
-        <div>
-          <span>Tamanho da fonte</span>
-          <small>Modo leitura clara, notificações bloqueadas</small>
+        <div class="toggle-item">
+          <div class="toggle-small">
+            <span>Passos Guiados</span>
+            <small>Mostra dicas sobre como usar a plataforma</small>
+          </div>
+          <label class="switch">
+            <input
+              type="checkbox"
+              [checked]="settingsForm().guidedSteps"
+              (change)="updateField('guidedSteps', $any($event.target).checked)">
+            <span class="slider"></span>
+          </label>
         </div>
-        <select class="font-select">
-          <option value="small">Pequena</option>
-          <option value="medium" selected>Média</option>
-          <option value="large">Grande</option>
-        </select>
-      </div>
+      </section>
 
-      <div class="toggle-item">
-        <div class="toggle-small">
-          <span>Alertas visuais</span>
-          <small
-            >Com essa opção ativa, você receberá alertas visuais em vez de sonoros, facilitando a
-            percepção de notificações mesmo em ambientes silenciosos.</small
-          >
-        </div>
-        <label class="switch">
-          <input type="checkbox" />
-          <span class="slider"></span>
-        </label>
-      </div>
+      <!-- Personalização Visual -->
+      <section class="section-desc">
+        <h3>Personalização Visual</h3>
+        <p class="panel-subtitle">Ajuste visuais para melhor conforto</p>
 
-      <div class="toggle-item">
-        <div class="toggle-small">
-          <span>Passos guiados</span>
-          <small
-            >Ao ativar essa opção, serão apresentados passo a passo, ajudando você a entender melhor
-            cada ação dentro do site evitando confusões durante o uso.</small
-          >
+        <div class="toggle-item">
+          <div class="toggle-small">
+            <span>Tamanho da Fonte</span>
+            <small>Escolha o tamanho ideal para você</small>
+          </div>
+          <select
+            class="font-select"
+            [value]="settingsForm().fontSize"
+            (change)="updateField('fontSize', $any($event.target).value)">
+            <option value="small">Pequeno</option>
+            <option value="medium">Médio</option>
+            <option value="large">Grande</option>
+          </select>
         </div>
-        <label class="switch">
-          <input type="checkbox" />
-          <span class="slider"></span>
-        </label>
-      </div>
-    </section>
 
-    <section class="section-desc">
-      <h3>Foco e produtividade</h3>
-      <p class="panel-subtitle">
-        Configurações pensadas para ajudar você a manter a concentração, organizar melhor seu tempo
-        e reduzir distrações durante as atividades.
-      </p>
-      <div class="toggle-item">
-        <div class="toggle-small">
-          <span>Modo foco</span>
-          <small
-            >Com o modo foco ativado, distrações visuais são reduzidas para que você consiga se
-            concentrar melhor na atividade que está realizando.</small
-          >
+        <div class="toggle-item">
+          <div class="toggle-small">
+            <span>Modo Escuro</span>
+            <small>Reduz o cansaço visual</small>
+          </div>
+          <label class="switch">
+            <input
+              type="checkbox"
+              [checked]="settingsForm().darkMode"
+              (change)="updateField('darkMode', $any($event.target).checked)">
+            <span class="slider"></span>
+          </label>
         </div>
-        <label class="switch">
-          <input type="checkbox" />
-          <span class="slider"></span>
-        </label>
-      </div>
 
-      <div class="toggle-item">
-        <div class="toggle-small">
-          <span>Timer pomodoro</span>
-          <small
-            >Ao ativar o timer pomodoro, você organiza seu tempo em ciclos de trabalho e pausa,
-            ajudando a manter o foco e evitar o cansaço mental.</small
-          >
+        <div class="toggle-item">
+          <div class="toggle-small">
+            <span>Alto Contraste</span>
+            <small>Melhora legibilidade</small>
+          </div>
+          <label class="switch">
+            <input
+              type="checkbox"
+              [checked]="settingsForm().highContrast"
+              (change)="updateField('highContrast', $any($event.target).checked)">
+            <span class="slider"></span>
+          </label>
         </div>
-        <label class="switch">
-          <input type="checkbox" />
-          <span class="slider"></span>
-        </label>
+      </section>
+
+      <!-- Foco e Produtividade -->
+      <section class="section-desc">
+        <h3>Foco e Produtividade</h3>
+        <p class="panel-subtitle">Controle quais ferramentas deseja usar</p>
+
+        <div class="toggle-item">
+          <div class="toggle-small">
+            <span>Modo Foco</span>
+            <small>Mostra/esconde o botão de modo foco no header</small>
+          </div>
+          <label class="switch">
+            <input
+              type="checkbox"
+              [checked]="settingsForm().focusModeEnabled"
+              (change)="updateField('focusModeEnabled', $any($event.target).checked)">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="toggle-item">
+          <div class="toggle-small">
+            <span>Timer Pomodoro</span>
+            <small>Mostra/esconde o timer no header</small>
+          </div>
+          <label class="switch">
+            <input
+              type="checkbox"
+              [checked]="settingsForm().pomodoroTimerEnabled"
+              (change)="updateField('pomodoroTimerEnabled', $any($event.target).checked)">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </section>
+
+      <div class="panel-footer">
+        <button type="submit" class="btn-save">Salvar</button>
       </div>
-    </section>
+    </form>
   </aside>
 }

@@ -4,6 +4,38 @@
   margin: 0 auto;
 }
 
+.dashboard-container.dark-mode {
+  background-color: #0f1724;
+  color: #e5e7eb;
+
+  .focus-banner { 
+    background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+    border-color: #4b5563; 
+  }
+  .column { background-color: #0b1220; color: #e5e7eb; }
+  .task-card { background-color: #111827; box-shadow: none; color: #e5e7eb; }
+  .btn-new-activity { background-color: #2563eb; color: #fff; }
+  .modal-content { background-color: #0b1220; color: #e5e7eb; border-color: #374151; }
+}
+
+.board-title.dark-mode{
+  color: #fff;
+}
+
+.dashboard-container.high-contrast {
+  background-color: #000;
+  color: #fff;
+  .focus-banner { background: #000; border: 2px solid #fff; }
+  .column { background-color: #000; border: 2px solid #fff; }
+  .task-card { background-color: #000; border: 1px solid #fff; color: #fff; }
+  .btn-new-activity { background-color: #fff; color: #000; border: 2px solid #fff; }
+  .modal-content { background-color: #000; color: #fff; border: 2px solid #fff; }
+}
+
+/* escala local – continua útil mesmo que o root já mude */
+.dashboard-container.font-small { font-size: 0.875rem; }
+.dashboard-container.font-large { font-size: 1.125rem; }
+
 .focus-banner {
   background: linear-gradient(135deg, #EDE7F6 0%, #E8F0FE 100%);
   border-radius: 1rem;
@@ -93,7 +125,8 @@
 
 .board-columns {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
   overflow-x: auto;
   padding-bottom: 1rem;
   min-height: 50vh;
@@ -117,12 +150,21 @@
   }
 }
 
+
+/* helpers adicionadas para demonstração das mudanças em tempo real */
+.font-small {
+  font-size: 0.875rem;
+}
+
+.font-large {
+  font-size: 1.25rem;
+}
+
 .column {
-  min-width: 300px;
-  max-width: 350px;
-  background-color: #f9fafb;
-  border-radius: 0.75rem;
+  min-width: 240px;
+  min-height: 160px;
   padding: 1rem;
+  border-radius: 0.75rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -310,6 +352,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  min-height: auto;
+  align-self: start;
   
   span {
     font-size: 1.5rem;
