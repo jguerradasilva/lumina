@@ -1,4 +1,4 @@
-interface SettingsForm {
+export interface SettingsForm {
   clearReading: boolean;
   lowAttention: boolean;
   fontSize: 'small' | 'medium' | 'large';

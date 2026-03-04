@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output, signal, effect, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppStateService } from '../../../services/app-state.service';
+import { SettingsForm } from '../../../domain/models/settingsFrom';
 
 @Component({
   selector: 'app-settings-panel',
