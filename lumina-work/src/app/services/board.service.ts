@@ -23,7 +23,12 @@ export class BoardService {
     if (savedColumns) {
       this.columns.set(JSON.parse(savedColumns));
     } else {
-      const defaultColumns: Column[] = [{ columnId: '1', name: 'A Fazeres', color: '#E8F0FE' }];
+      // Criar colunas padrão
+      const defaultColumns: Column[] = [
+        { columnId: '1', name: 'Backlog', color: '#E8F0FE' },
+        { columnId: '3', name: 'Desenvolvimento', color: '#9CA4A4' },
+        { columnId: '4', name: 'Concluídas', color: '#E6F4EA' },
+      ];
       this.columns.set(defaultColumns);
       this.saveColumns();
     }

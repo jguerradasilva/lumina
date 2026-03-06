@@ -1,7 +1,8 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PomodoroService } from '../../services/pomodoro.service';
-import { AppStateService } from '../../services/app-state.service';
+import { AppStateService } from '../../../services/app-state.service';
+import { PomodoroService } from '../../../services/pomodoro.service';
+
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ import { AppStateService } from '../../services/app-state.service';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  @Output() onOpenSettings = new EventEmitter<void>();
+  @Output() settingsOpened = new EventEmitter<void>();
 
   private pomodoroService = inject(PomodoroService);
   private appStateService = inject(AppStateService);
@@ -53,6 +54,6 @@ export class HeaderComponent {
   }
 
   openSettings(): void {
-    this.onOpenSettings.emit();
+    this.settingsOpened.emit();
   }
 }

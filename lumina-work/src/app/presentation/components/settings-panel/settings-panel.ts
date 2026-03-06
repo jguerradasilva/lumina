@@ -1,18 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output, signal, effect, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AppStateService } from '../../services/app-state.service';
-
-interface SettingsForm {
-  clearReading: boolean;
-  lowAttention: boolean;
-  fontSize: 'small' | 'medium' | 'large';
-  guidedSteps: boolean;
-  darkMode: boolean;
-  highContrast: boolean;
-  focusModeEnabled: boolean;
-  pomodoroTimerEnabled: boolean;
-}
+import { AppStateService } from '../../../services/app-state.service';
+import { SettingsForm } from '../../../domain/models/settingsFrom';
 
 @Component({
   selector: 'app-settings-panel',
@@ -23,7 +13,7 @@ interface SettingsForm {
 })
 export class SettingsPanel {
   @Input() isOpen = false;
-  @Output() close = new EventEmitter<void>();
+  @Output() panelClose = new EventEmitter<void>();
   @Output() save = new EventEmitter<SettingsForm>();
 
   private appState = inject(AppStateService);
@@ -37,6 +27,7 @@ export class SettingsPanel {
     highContrast: false,
     focusModeEnabled: true,
     pomodoroTimerEnabled: true,
+    hideAnimations: false,
   });
 
   constructor() {
@@ -51,6 +42,7 @@ export class SettingsPanel {
           highContrast: this.appState.highContrast(),
           focusModeEnabled: this.appState.focusModeEnabled(),
           pomodoroTimerEnabled: this.appState.pomodoroTimerEnabled(),
+          hideAnimations: this.appState.hideAnimations(),
         });
       }
     });
@@ -69,6 +61,6 @@ export class SettingsPanel {
 
   onClose(): void {
     this.save.emit(this.settingsForm());
-    this.close.emit();
+    this.panelClose.emit();
   }
 }

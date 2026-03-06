@@ -16,8 +16,10 @@ export class AppStateService {
   darkMode = signal(false);
   highContrast = signal(false);
 
-  focusModeEnabled = signal(true);
-  pomodoroTimerEnabled = signal(true);
+  // Settings signals - Foco e Produtividade
+  focusModeEnabled = signal(true); // controla se o botão aparece no header
+  pomodoroTimerEnabled = signal(true); // controla se o timer pomodoro aparece
+  hideAnimations = signal(false);
 
   constructor() {
     effect(() => {
@@ -52,6 +54,7 @@ export class AppStateService {
     highContrast: boolean;
     focusModeEnabled: boolean;
     pomodoroTimerEnabled: boolean;
+    hideAnimations: boolean;
   }): void {
     this.clearReading.set(settings.clearReading);
     this.lowAttention.set(settings.lowAttention);
@@ -61,10 +64,11 @@ export class AppStateService {
     this.highContrast.set(settings.highContrast);
     this.focusModeEnabled.set(settings.focusModeEnabled);
     this.pomodoroTimerEnabled.set(settings.pomodoroTimerEnabled);
-
+    this.hideAnimations.set(settings.hideAnimations);
+    // Salva as configurações no localStorage
     this.saveSettings();
 
-    console.log('[AppState] Configurações atualizadas:', settings);
+    console.warn('[AppState] Configurações atualizadas:', settings);
   }
 
   private applyAccessibilityClasses(): void {
@@ -91,6 +95,7 @@ export class AppStateService {
       highContrast: this.highContrast(),
       focusModeEnabled: this.focusModeEnabled(),
       pomodoroTimerEnabled: this.pomodoroTimerEnabled(),
+      hideAnimations: this.hideAnimations(),
     };
     localStorage.setItem('lumina_settings', JSON.stringify(settings));
   }

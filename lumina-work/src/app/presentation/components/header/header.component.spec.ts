@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeaderComponent } from '../header/header.component';
-import { PomodoroService } from '../../services/pomodoro.service';
-import { AppStateService } from '../../services/app-state.service';
+import { PomodoroService } from '../../../services/pomodoro.service';
+import { AppStateService } from '../../../services/app-state.service';
 
 describe('Header', () => {
   let component: HeaderComponent;
@@ -75,9 +75,8 @@ describe('Header', () => {
     expect(appStateServiceMock.toggleFocusMode).toHaveBeenCalled();
   });
 
-  it('should emit onOpenSettings event', () => {
-    const emitSpy = vi.spyOn(component.onOpenSettings, 'emit');
-
+  it('should emit settingsOpened when openSettings is called', () => {
+    const emitSpy = vi.spyOn(component.settingsOpened, 'emit');
     component.openSettings();
 
     expect(emitSpy).toHaveBeenCalled();

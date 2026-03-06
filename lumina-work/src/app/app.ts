@@ -1,10 +1,11 @@
-import { Component, signal, effect } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { SettingsPanel } from './components/settings-panel/settings-panel';
+import { FooterComponent } from './presentation/components/footer/footer.component';
+import { HeaderComponent } from './presentation/components/header/header.component';
+import { SettingsPanel } from './presentation/components/settings-panel/settings-panel';
+import { SettingsForm } from './domain/models/settingsFrom';
 
 @Component({
   selector: 'app-root',
@@ -19,24 +20,27 @@ export class App {
   darkMode = false;
   highContrast = false;
 
-  constructor(private router: Router) {
+  private router = inject(Router);
+
+  constructor() {
+    // Ocultar header/footer no onboarding
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe((event: any) => {
+      .subscribe((event: NavigationEnd) => {
         this.showLayout.set(!event.url.includes('onboarding'));
       });
   }
 
   handleOpenSettings(): void {
     this.settingsOpen = true;
-    console.log('Abrir configurações');
+    // TODO: Implementar modal ou rota de configurações
   }
 
   handleCloseSettings() {
     this.settingsOpen = false;
   }
 
-  handleSaveSettings(settings: any) {
+  handleSaveSettings(settings: SettingsForm) {
     this.darkMode = settings.darkMode;
     this.highContrast = settings.highContrast;
 

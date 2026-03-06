@@ -1,19 +1,11 @@
 ﻿<div class="app-container">
   @if (showLayout()) {
-    <app-header (onOpenSettings)="handleOpenSettings()"></app-header>
+    <app-header (settingsOpened)="handleOpenSettings()"></app-header>
   }
-
-  <main class="main-content"
-  [class.full-height]="!showLayout()"
-  [class.dark-mode]="darkMode"
-  [class.high-contrast]="highContrast"
-  [class.full-height]="!showLayout()">
     <router-outlet></router-outlet>
-  </main>
-
   @if (showLayout()) {
     <app-footer></app-footer>
   }
 
-  <app-settings-panel [isOpen]="settingsOpen" (close)="handleCloseSettings()"> </app-settings-panel>
+  <app-settings-panel [isOpen]="settingsOpen" (panelClose)="handleCloseSettings()"> </app-settings-panel>
 </div>

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SettingsPanel } from '../settings-panel/settings-panel';
-import { AppStateService } from '../../services/app-state.service';
+import { AppStateService } from '../../../services/app-state.service';
+import { SettingsForm } from '../../../domain/models/settingsFrom';
 
 describe('SettingsPanel', () => {
   let component: SettingsPanel;
@@ -70,13 +71,27 @@ describe('SettingsPanel', () => {
     expect(appStateMock.updateSettings).toHaveBeenCalled();
   });
 
-  it('should emit save and close events on onClose()', () => {
+  it('should emit save with form values and close panel when onClose is called', () => {
     const saveSpy = vi.spyOn(component.save, 'emit');
-    const closeSpy = vi.spyOn(component.close, 'emit');
+    const closeSpy = vi.spyOn(component.panelClose, 'emit');
+
+    const mockForm: SettingsForm = {
+      clearReading: true,
+      lowAttention: false,
+      fontSize: 'large',
+      guidedSteps: true,
+      darkMode: true,
+      highContrast: false,
+      focusModeEnabled: true,
+      pomodoroTimerEnabled: false,
+      hideAnimations: false,
+    };
+
+    vi.spyOn(component, 'settingsForm').mockReturnValue(mockForm);
 
     component.onClose();
 
-    expect(saveSpy).toHaveBeenCalledWith(component.settingsForm());
+    expect(saveSpy).toHaveBeenCalledWith(mockForm);
     expect(closeSpy).toHaveBeenCalled();
   });
 });

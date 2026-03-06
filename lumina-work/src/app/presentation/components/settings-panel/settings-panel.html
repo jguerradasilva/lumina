@@ -1,5 +1,5 @@
 @if (isOpen) {
-  <div class="overlay" (click)="onClose()"></div>
+  <div class="overlay" (click)="onClose()" (keyup.enter)="onClose()" tabindex="0" role="button" aria-label="Fechar configurações"></div>
 
   <aside class="panel open">
     <form (ngSubmit)="onClose()">
@@ -103,6 +103,20 @@
               type="checkbox"
               [checked]="settingsForm().highContrast"
               (change)="updateField('highContrast', $any($event.target).checked)">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="toggle-item">
+          <div class="toggle-small">
+            <span>Remover Animações</span>
+            <small>Esconde animações das janelas de criação, edição e mensagens</small>
+          </div>
+          <label class="switch">
+            <input
+              type="checkbox"
+              [checked]="settingsForm().hideAnimations"
+              (change)="updateField('hideAnimations', $any($event.target).checked)">
             <span class="slider"></span>
           </label>
         </div>
