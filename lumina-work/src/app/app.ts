@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs';
@@ -6,6 +6,8 @@ import { FooterComponent } from './presentation/components/footer/footer.compone
 import { HeaderComponent } from './presentation/components/header/header.component';
 import { SettingsPanel } from './presentation/components/settings-panel/settings-panel';
 import { SettingsForm } from './domain/models/settingsFrom';
+import { AppStateService } from './services/app-state.service';
+
 
 @Component({
   selector: 'app-root',
@@ -14,15 +16,24 @@ import { SettingsForm } from './domain/models/settingsFrom';
   styleUrl: './app.scss',
 })
 export class App {
+  private appStateService = inject(AppStateService);
   protected readonly title = signal('lumina-work');
   showLayout = signal(false);
   settingsOpen = false;
   darkMode = false;
   highContrast = false;
 
-  private router = inject(Router);
+  constructor(private router: Router) {
+    let previousGuidedStepsState = this.appStateService.guidedSteps();
 
-  constructor() {
+    effect(() => {
+      const currentGuidedStepsState = this.appStateService.guidedSteps();
+      if (!previousGuidedStepsState && currentGuidedStepsState && this.settingsOpen) {
+        this.handleCloseSettings();
+      }
+      previousGuidedStepsState = currentGuidedStepsState;
+    });
+
     // Ocultar header/footer no onboarding
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
