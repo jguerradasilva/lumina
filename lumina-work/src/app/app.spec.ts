@@ -16,7 +16,9 @@ describe('App', () => {
 
   it('should render the app container with router outlet', async () => {
     const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
     await fixture.whenStable();
+
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.app-container')).toBeTruthy();
     expect(compiled.querySelector('router-outlet')).toBeTruthy();

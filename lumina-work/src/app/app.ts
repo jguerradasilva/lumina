@@ -7,7 +7,6 @@ import { HeaderComponent } from './presentation/components/header/header.compone
 import { SettingsPanel } from './presentation/components/settings-panel/settings-panel';
 import { SettingsForm } from './domain/models/settingsFrom';
 
-
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, HeaderComponent, FooterComponent, SettingsPanel, CommonModule],

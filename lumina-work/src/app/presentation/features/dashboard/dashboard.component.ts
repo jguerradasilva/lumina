@@ -38,7 +38,6 @@ export class DashboardComponent {
     color: '#E8F0FE'
   });
 
-  // ============ GETTERS DO AppStateService ============
   get focusMode(): boolean {
     return this.appStateService.focusMode();
   }
@@ -67,7 +66,6 @@ export class DashboardComponent {
     return this.appStateService.highContrast();
   }
 
-  // ============ GETTERS DO BoardService ============
   get columns(): Column[] {
     return this.boardService.columns();
   }

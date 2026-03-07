@@ -25,7 +25,6 @@ export class HeaderComponent {
     return this.pomodoroService.isRunning();
   }
 
-  // Controla se o timer pomodoro é exibido
   get pomodoroTimerEnabled(): boolean {
     return this.appStateService.pomodoroTimerEnabled();
   }
@@ -34,7 +33,6 @@ export class HeaderComponent {
     return this.appStateService.pomodoroEnabled();
   }
 
-  // Controla se o botão de modo foco é exibido
   get focusModeEnabled(): boolean {
     return this.appStateService.focusModeEnabled();
   }
