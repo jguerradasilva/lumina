@@ -1,7 +1,24 @@
 
-# 🌞 Lumina
 
-Lumina is a web application focused on accessibility, productivity, and inclusion. Designed to help users organize tasks, leverage Pomodoro techniques, and provide an accessible experience for everyone.
+# 🌞 Lumina - Accessible Productivity Platform
+
+<p>
+Lumina is a modern web application focused on accessibility, productivity, and inclusion. Built with Angular, TypeScript, and SCSS, it helps users organize tasks, leverage Pomodoro techniques, and provides an accessible experience for everyone.
+</p>
+
+<!-- Stack Badges -->
+<p>
+	<img src="https://img.shields.io/badge/Angular-21.1.x-red?logo=angular" />
+	<img src="https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript" />
+	<img src="https://img.shields.io/badge/SCSS--%20-pink?logo=sass" />
+	<img src="https://img.shields.io/badge/Node.js-18%2F20-green?logo=node.js" />
+	<img src="https://img.shields.io/badge/Vitest-4.x-yellow?logo=vitest" />
+	<img src="https://img.shields.io/badge/ESLint-9.x-purple?logo=eslint" />
+	<img src="https://img.shields.io/badge/Prettier-3.x-orange?logo=prettier" />
+	<img src="https://img.shields.io/badge/GitHub%20Actions--%20-blue?logo=github" />
+</p>
+
+---
 
 ---
 
@@ -21,16 +38,29 @@ Lumina was created for the FIAP Inclusive Hackathon, with a strong emphasis on a
 
 ## 🛠️ Technology Stack
 
-| Technology   | Purpose                |
-| ------------ | ---------------------- |
-| Angular      | UI Framework           |
-| TypeScript   | Type Safety            |
-| SCSS         | Styling                |
-| Node.js      | Runtime                |
-| Vitest       | Testing                |
-| ESLint       | Code Quality           |
-| Prettier     | Code Formatting        |
-| GitHub Actions | CI/CD Pipeline       |
+
+| Technology      | Version    | Purpose                |
+| --------------- | ---------- | ---------------------- |
+| Angular         | 21.1.x     | UI Framework           |
+| TypeScript      | 5.x        | Type Safety            |
+| SCSS            | -          | Styling                |
+| Node.js         | 18/20      | Runtime                |
+| Vitest          | 4.x        | Testing                |
+| ESLint          | 9.x        | Code Quality           |
+| Prettier        | 3.x        | Code Formatting        |
+| GitHub Actions  | -          | CI/CD Pipeline         |
+
+### 📦 Stack Features
+
+- ⚡ Modern Angular signals for reactivity
+- 🧩 Modular architecture (presentation, domain, model, services)
+- ♿ Accessibility-first (keyboard navigation, ARIA, high contrast)
+- ⏰ Pomodoro timer integration
+- 🗂️ Task board with columns and cards
+- 🛠️ Configurable settings (font size, dark mode, focus mode)
+- 🧪 Unit tests with Vitest
+- 🚀 CI/CD with GitHub Actions
+- 🧹 Linting and formatting with ESLint and Prettier
 
 ---
 
