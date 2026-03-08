@@ -1,5 +1,3 @@
-
-
 # 🌞 Lumina - Accessible Productivity Platform
 
 <p>
@@ -194,11 +192,3 @@ Developed by: [@jguerradasilva](https://github.com/jguerradasilva)
 Version: 1.0.0 | Last Update: March 2026
 
 If you found this project useful, please consider giving it a star!
-
-Essas melhorias garantem uma experiência inclusiva, sem dependência do mouse.
-
-## Contribuição
-Pull requests são bem-vindos. Para contribuir, siga as práticas de Git Flow e mantenha a cobertura de testes.
-
-## Contato
-Para dúvidas ou sugestões, abra uma issue no repositório.
