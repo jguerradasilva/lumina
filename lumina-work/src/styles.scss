@@ -1,0 +1,148 @@
+/* Reset e estilos globais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #f9fafb;
+  color: #1f2937;
+}
+
+/* Variáveis de cores pastéis do Lumina */
+:root {
+  /* Cores de fundo */
+  --color-white-pastel: #F5F5F5;
+  --color-yellow-pastel: #FFF9E6;
+  --color-blue-pastel: #E8F0FE;
+  --color-green-pastel: #E6F4EA;
+  --color-lavender-pastel: #EDE7F6;
+  
+  /* Cores de ação */
+  --color-blue-action: #BDD7F5;
+  --color-red-pastel: #F5B5B5;
+  
+  /* Cores de texto */
+  --color-text-dark: #1f2937;
+  --color-text-medium: #6b7280;
+  --color-text-light: #9ca3af;
+}
+
+/* Utilitários */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ========== global.scss / styles.scss ========== */
+
+/* tamanho da fonte raiz (1rem) */
+html.font-small  { font-size: 14px; }
+html.font-medium { font-size: 16px; } /* valor padrão */
+html.font-large  { font-size: 18px; }
+
+/* Fallback para body */
+body.font-small  { font-size: 14px; }
+body.font-medium { font-size: 16px; } /* valor padrão */
+body.font-large  { font-size: 18px; }
+
+/* modo escuro */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+body.dark-mode .app-header,
+body.dark-mode .app-footer,
+body.dark-mode .panel,
+body.dark-mode .modal-content {
+  background-color: #1e1e1e;
+  color: inherit;
+}
+body.dark-mode .toggle-item { border-bottom-color: #444; }
+
+/* alto contraste */
+body.high-contrast {
+  background-color: #000;
+  color: #fff;
+}
+body.high-contrast .panel,
+body.high-contrast .modal-content {
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #fff;
+}
+body.high-contrast .btn-save,
+body.high-contrast .btn-cancel {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #000;
+}
+body.high-contrast .slider {
+  background-color: #000;
+  border: 2px solid #fff;
+}
+
+/* modo low attention */
+body.mode-low-attention {
+  font-size: calc(16px + 4px); /* aumenta fonte base em 4px */
+}
+
+body.mode-low-attention .column {
+  width: calc(300px + 20px); /* aumenta largura das colunas em 20px */
+  min-height: calc(400px + 20px); /* aumenta altura mínima das colunas em 20px */
+}
+
+body.mode-low-attention .task-card {
+  padding: calc(12px + 4px); /* aumenta padding dos cards de tarefa em 4px */
+  margin-bottom: calc(8px + 4px); /* aumenta margem inferior dos cards em 4px */
+  font-size: calc(14px + 4px); /* aumenta fonte dos cards em 4px */
+}
+
+body.mode-low-attention .task-title {
+  font-size: calc(16px + 4px); /* aumenta fonte do título das tarefas em 4px */
+  font-weight: 600;
+}
+
+body.mode-low-attention .task-description {
+  font-size: calc(14px + 4px); /* aumenta fonte da descrição das tarefas em 4px */
+}
+
+body.mode-low-attention .btn,
+body.mode-low-attention button {
+  padding: calc(8px + 4px) calc(16px + 4px); /* aumenta padding dos botões em 4px */
+  font-size: calc(14px + 4px); /* aumenta fonte dos botões em 4px */
+}
+
+/* Exceção para o botão pomodoro - não deve ser afetado pelo modo low attention */
+body.mode-low-attention .pomodoro-pill .pomodoro-toggle {
+  padding: 0px !important; 
+  font-size: 14px !important;
+}
+
+body.mode-low-attention .modal-content {
+  padding: calc(24px + 8px); /* aumenta padding do modal em 8px */
+}
+
+body.mode-low-attention .panel {
+  padding: calc(16px + 4px); /* aumenta padding dos painéis em 4px */
+}
+
+body.mode-low-attention .focus-banner {
+  padding: calc(12px + 4px) calc(16px + 4px); /* aumenta padding do banner de foco em 4px */
+  font-size: calc(16px + 4px); /* aumenta fonte do banner em 4px */
+}
